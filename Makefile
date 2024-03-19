@@ -38,6 +38,7 @@ clean-front-end:
 	cd front-end; rm -rf node_modules/ build/
 
 clean-python-back-end:
+	cd back-end/python; find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 	rm -rf .venv/
 
 # actual perform rules that create files/folders

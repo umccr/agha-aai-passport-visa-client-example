@@ -1,5 +1,6 @@
 # systems this Makefile has been tested against
 # macOS 14, M1 Mac, brew installed python and node
+# Ubuntu 20, M1 Mac, apt installed python3.11-venv, make, node, npm
 
 
 .PHONY: setup setup-front-end setup-python-back-end clean
@@ -21,7 +22,7 @@ build-front-end: setup-front-end front-end/build/index.html
 # to run our Python we need both the front-end built, and Python setup and ready to go
 
 run-python-back-end: build-front-end setup-python-back-end
-	source .venv/bin/activate; cd back-end/python; python server.py
+	. .venv/bin/activate; cd back-end/python; python server.py
 
 # to run our Typescript we need both the front-end built, and NodeJs back-end setup and ready to go
 
@@ -50,4 +51,4 @@ front-end/node_modules: front-end/package.json front-end/package-lock.json
 	cd front-end; npm install; touch node_modules
 
 .venv/lib: back-end/python/requirements.txt
-	python3 -m venv .venv; source .venv/bin/activate; touch .venv/lib; cd back-end/python; pip install -r requirements.txt;
+	python3 -m venv .venv; . .venv/bin/activate; touch .venv/lib; cd back-end/python; pip install -r requirements.txt;

@@ -82,3 +82,6 @@ passport environment - but which is useful for testing.
 
 After a successful broker flow - the "client" will have
 "passport-scoped access token" (essentially the key to get a passport).
+In the user interface, this key can then be "exchanged" for a real
+passport - which will show a variety of real visas that are issued
+for the different users.

@@ -2,6 +2,9 @@
 # macOS 14, M1 Mac, brew installed python and node
 # Ubuntu 20, M1 Mac, apt installed python3.11-venv, make, node, npm
 
+EXECUTABLES = python3 pip3 npx npm 
+K := $(foreach exec,$(EXECUTABLES), $(if $(shell which $(exec)),some string,$(error "No $(exec) in PATH")))
+
 #
 # by default we do everything to set up for running any of the backends
 #
@@ -23,7 +26,7 @@ build-front-end: setup-front-end front-end/build/index.html
 #
 
 run-python-back-end: build-front-end setup-python-back-end
-	. .venv/bin/activate; cd back-end/python; python server.py
+	. .venv/bin/activate; cd back-end/python; python3 server.py
 
 # WIP
 # run-typescript-back-end: build-front-end setup-typescript-back-end
@@ -55,5 +58,5 @@ front-end/node_modules: front-end/package.json front-end/package-lock.json
 	cd front-end; npm install; touch node_modules
 
 .venv/lib: back-end/python/requirements.txt
-	python3 -m venv .venv; . .venv/bin/activate; touch .venv/lib; cd back-end/python; pip install -r requirements.txt;
+	python3 -m venv .venv; . .venv/bin/activate; touch .venv/lib; cd back-end/python; pip3 install -r requirements.txt;
 

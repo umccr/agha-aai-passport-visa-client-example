@@ -1,5 +1,9 @@
 # GA4GH AAI (Passport/Visa) Clients
 
+> [!QUICKSTART]
+> You should just be able to type `make run-python-back-end` on any machine with NodeJS and Python installed 
+
+
 This repository contains an example "client" in a GA4GH passport ecosystem.
 
 The "client" is a (fake) research environment website - a web portal that
